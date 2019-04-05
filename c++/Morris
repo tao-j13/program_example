@@ -1,0 +1,28 @@
+void inorderMorris(TreeNode * root)
+{
+	while (root)
+	{
+		TreeNode * temp = root->left;
+		if (temp == NULL)
+		{
+			cout << root->val << endl;
+			root = root->right;
+			continue;
+		}
+		while (temp->right && temp->right !=root)
+		{
+			temp = temp->right;
+		}
+		if (temp->right == NULL)
+		{
+			temp->right = root;
+			root = root->left;
+		}
+		else
+		{
+			temp->right = NULL;
+			cout << root->val << endl;
+			root = root->right;
+		}
+	}
+}
